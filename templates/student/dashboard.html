@@ -1,0 +1,243 @@
+ {% extends "base.html" %} {% block mainbody %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <h3>Your Stats</h3>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">computer</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Total Classes</p>
+                        <h3 class="card-title">{{clases.count}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons text-danger">warning</i> <a href="#pablo">Get More Space...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="rose">
+                        <i class="material-icons">home</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Your attended classes</p>
+                        <h3 class="card-title">{{attedance}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">local_offer</i> Tracked from Google Analytics
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">equalizer</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Percentage</p>
+                        <h3 class="card-title">{{percentage}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">date_range</i> Last 24 Hours
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="blue">
+                        <a href="{{whatsapplink}}"><i class="fa fa-whatsapp"></i>
+            </div></a>
+                        <div class="card-content">
+                            <p class="category">Community of </p>
+                            <h3 class="card-title">{{whatsapp_grp}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">update</i> Just Updated
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-icon" data-background-color="green">
+                            <i class="material-icons">Assignment</i>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Your Timtable</h4>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="table-responsive table-sales">
+                                        <table class="table">
+                                            <tbody>
+                                                {% for class in classes %}
+                                                <tr>
+                                                    <td>
+                                                        <div class="flag">
+                                                            <img src="{{course.img.url}}">
+                                                        </div>
+                                                    </td>
+                                                    <td>{{class.name}}</td>
+                                                    <td class="text-right">
+                                                        {{class.timing}}
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <a href="{{class.link}}">{{class.status}}</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        {{class.teacher}}
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-md-offset-1">
+                                    <div id="worldMap" class="map"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {% for assignment in assignments %}
+            <div class="row">
+                <h3>Pending Assignments</h3>
+                <div class="col-md-4">
+                    <div class="card card-chart">
+                        <div class="card-header" data-background-color="rose" data-header-animation="true">
+                            <div class="ct-chart" id="websiteViewsChart"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-actions">
+                                <button type="button" class="btn btn-danger btn-simple fix-broken-card">
+<i class="material-icons">build</i> Fix Header!
+</button>
+                                <button type="button" class="btn btn-info btn-simple" rel="tooltip" data-placement="bottom" title="Refresh">
+<i class="material-icons">refresh</i>
+</button>
+
+                            </div>
+                            <h4 class="card-title">{{assignment.title}}</h4>
+                            <p class="category">{{Assignment.task}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">access_time</i> campaign sent {{assignmient.provided_time}}ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+
+
+
+            <div class="row">
+                <h3>Manage Listings</h3>
+                <br>
+                <div class="row">
+
+                    {% for box in boxes %}
+                    <div class="col-md-4">
+                        <div class="card card-product">
+                            <div class="card-image" data-header-animation="true">
+                                <a href="#pablo">
+                                    <img class="img" src="{{meme.url}}">
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-actions">
+                                    <button type="button" class="btn btn-danger btn-simple fix-broken-card">
+<i class="material-icons">build</i> Fix Header!
+</button>
+                                    <button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="View">
+<i class="material-icons">art_track</i>
+</button>
+                                    <button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="Edit">
+<i class="material-icons">edit</i>
+</button>
+                                    <button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="Remove">
+<i class="material-icons">close</i>
+</button>
+                                </div>
+                                <h4 class="card-title">
+                                    <a href="#pablo">Today's Quotes</a>
+                                </h4>
+                                <div class="card-description">
+                                    {{qoute}}
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="price">
+                                    <h4>Doing great</h4>
+                                </div>
+                                <div class="stats pull-right">
+                                    <p class="category"><i class="material-icons">place</i> Here we are to help you </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% endblock mainbody %}

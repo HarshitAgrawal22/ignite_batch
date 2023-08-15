@@ -1,0 +1,12 @@
+{% extends 'home/auth_base.html' %}
+{% block task %}{% url 'login' %}{% endblock task %}
+{% block taskname %}Login{% endblock taskname %}
+{% block cardtitle %}REGISTER{% endblock cardtitle %}
+{% block inputs %}
+<div class="input-group">
+<span class="input-group-addon">
+<i class="material-icons">Email</i>
+</span>
+<input type="text" class="form-control" placeholder="Email...">
+</div>
+{% endblock inputs %}
