@@ -8,9 +8,9 @@ from django.contrib.auth.decorators import login_required
 
 def login(request):
     if request.method=="POST":
-        username=request.POST.get("username")
-        password=request.POST.get("password")
-        if User.objects.filter(username=username).exists():
+        username=request.POST.get("stu_username")
+        password=request.POST.get("stu_password")
+        if  not User.objects.filter(username=username).exists():
             messages.error("Invalid Username")
             return redirect("login")
         else:
@@ -26,7 +26,7 @@ def signup(request):
     if request.method=="POST":
         
         
-        new_user=User.objects.create(username=request.POST.get("username"),email=request.POST.get("email"))
+        new_user=User.objects.create(username=request.POST.get("stu_username"),email=request.POST.get("email"))
         
         new_user.set_password(request.POST.get("password"))
         

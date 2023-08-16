@@ -1,4 +1,4 @@
-{% extends 'student/auth_base.html' %} {% block task %}{% url 'stu_login' %}{% endblock task %} {% block taskname %}LOGIN{% endblock taskname %} {% block cardtitle %}REGISTER{% endblock cardtitle %} {% block inputs %}
+{% extends 'teacher/auth_base.html' %} {% block task %}{% url 'stu_login' %}{% endblock task %} {% block taskname %}LOGIN{% endblock taskname %} {% block cardtitle %}REGISTER{% endblock cardtitle %} {% block inputs %}
 
 <div class="input-group">
     <span class="input-group-addon">
@@ -6,9 +6,11 @@
 </span>
     <div class="form-group label-floating">
         <label class="control-label">First Name</label>
-        <input type="text" name="stu_FN" required class="form-control">
+        <input type="text" name="teach_FN" required class="form-control">
     </div>
 </div>
+
+
 
 
 <div class="input-group">
@@ -17,9 +19,11 @@
 </span>
     <div class="form-group label-floating">
         <label class="control-label">Last Name</label>
-        <input type="text" name="stu_LN" required class="form-control">
+        <input type="text" name="teach_LM" required class="form-control">
     </div>
 </div>
+
+
 
 <div class="input-group">
     <span class="input-group-addon">
@@ -27,7 +31,7 @@
 </span>
     <div class="form-group label-floating">
         <label class="control-label">Bio</label>
-        <input type="text" name="stu_bio" required class="form-control">
+        <input type="text" name="teach_bio" required class="form-control">
     </div>
 </div>
 
@@ -38,25 +42,15 @@
 </span>
     <div class="form-group label-floating">
         <label class="control-label">Phone Number</label>
-        <input type="number" name="stu_num" required class="form-control">
-    </div>
-</div>
-
-
-<div class="input-group">
-    <span class="input-group-addon">
-<i class="material-icons">Parents Phone Number</i>
-</span>
-    <div class="form-group label-floating">
-        <label class="control-label">Parents Phone Number</label>
-        <input type="number" name="stu_parent_num" required class="form-control">
+        <input type="number" name="teach_num" required class="form-control">
     </div>
 </div>
 
 
 
+
 <div class="input-group">
-    <div class="col-md-3 col-sm-4">
+   
 
         <div class="fileinput fileinput-new text-center" data-provides="fileinput">
             <div class="fileinput-new thumbnail img-circle">
@@ -67,32 +61,25 @@
                 <span class="btn btn-round btn-rose btn-file">
 <span class="fileinput-new">Profile Pic</span>
                 <span class="fileinput-exists">Change</span>
-                <input type="file" name="stu_pic" /></span>
+                <input type="file" name="teach_pic" /></span>
                 <br/>
                 <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
             </div>
         </div>
     </div>
-</div>
+
 
 
 <div class="input-group">
-    <span class="input-group-addon">
-<i class="material-icons">address</i>
-</span>
-    <div class="form-group label-floating">
-        <label class="control-label">Address</label>
-        <input type="text" name="stu_address" required class="form-control">
-    </div>
-</div>
-<div class="input-group">
-    <div class="col-lg-5 col-md-6 col-sm-3">
-        <select class="selectpicker" data-style="btn btn-primary " title="stu_gender" name="stu_gender" data-size="35">
+    
+        <select class="selectpicker" data-style="btn btn-primary " title="stu_gender" name="teach_gender" data-size="35">
+
+
 <option disabled selected>Gender</option>
 <option value="Male">Male</option>
 <option value="Female">Female</option>
 <option value="Prefer not say">Prefer not say</option>
 </select>
-    </div>
+    
 </div>
 {% endblock inputs %}

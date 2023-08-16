@@ -591,12 +591,29 @@
             <!-- Here I've inserted Score Result from JavaScript -->
         </div>
         <div class="buttons">
-            <button class="restart">Replay Quiz</button>
-            <button class="quit">Quit Quiz</button>
-        </div>
+            <a href="{% url 'dashboard' %}">
+
+                <button class="quit">Quit Quiz</button>
+        
+            </a></div>
     </div>
     <script>
         // creating an array and passing the number, questions, options, and answers
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {% for quesion in questions%}
+
         let questions = [{
             numb: 1,
             question: "{{question}}",
@@ -608,6 +625,21 @@
                 "{{option4}}"
             ]
         }];
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //selecting all required elements
         const start_btn = document.querySelector(".start_btn button");

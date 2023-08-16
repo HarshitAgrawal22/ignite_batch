@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 # Create your models here.
             
 class Teacher(User):
-    contact_num=models.CharField(max_length=10)
+    phone_num=models.CharField(max_length=10)
     
+   
     bio=models.CharField(max_length=100,blank=True,null=True)
     
     gender=models.CharField(max_length=19,choices=(("Male","Male"),("Female","Female"),("Prefer not say","Prefer not to say")))
