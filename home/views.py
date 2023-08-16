@@ -1,8 +1,4 @@
 from django.shortcuts import render,redirect
-
-from . import views
-from django.contrib.auth.models import User
-
 from django.contrib import auth,messages
 from django.contrib.auth.decorators import login_required
 

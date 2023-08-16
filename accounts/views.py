@@ -1,40 +1,51 @@
-from django.shortcuts import render,redirect
-
-from . import views
-from django.contrib.auth.models import User
-
-from django.contrib import auth,messages
+from django.shortcuts import render, redirect
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from .models import Student
+
 
 def login(request):
-    if request.method=="POST":
-        username=request.POST.get("stu_username")
-        password=request.POST.get("stu_password")
-        if  not User.objects.filter(username=username).exists():
-            messages.error("Invalid Username")
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        if not Student.objects.filter(username=username).exists():
+            messages.error(request, "Invalid Username")
             return redirect("login")
         else:
-            myuser=auth.authenticate(username=username,password=password)
-            auth.login(request,myuser)
-            messages.success("Welcome back brother")
-            return redirect("dashboard")
-    return render(request,"home/login.html")
+            myuser = auth.authenticate(username=username, password=password)
+            auth.login(request, myuser)
+            messages.success(request, "Welcome back brother")
+            return redirect("stu_dashboard")
 
+    return render(request, "accounts/login.html")
 
 
 def signup(request):
-    if request.method=="POST":
-        
-        
-        new_user=User.objects.create(username=request.POST.get("stu_username"),email=request.POST.get("email"))
-        
-        new_user.set_password(request.POST.get("password"))
-        
-        new_user.save()
-        
-        messages.success("Welcome to Ignite")
-        
-        return redirect("login")
-    
-    return render(request,"notes.html")
+    if request.method == "POST":
 
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+
+        if Student.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists")
+            return redirect("signup")
+        
+        elif Student.objects.filter(email=email).exists():
+            messages.error(request, "Email already exists")
+            return redirect("signup")
+        
+        else:
+            user = Student.objects.create_user(
+                username=username, 
+                email=email
+            )
+            
+            user.set_password(password)
+            
+            user.save()
+            messages.success(request, "Welcome to Ignite")
+
+        return redirect("login")
+
+    return render(request, "accounts/signup.html")
