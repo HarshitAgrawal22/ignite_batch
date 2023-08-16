@@ -1,5 +1,7 @@
-
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,11 +16,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-from dotenv import load_dotenv
+ALLOWED_HOSTS = ["*"]
 
-load_dotenv()
-import os
 SECRET_KEY=os.environ.get("SECRET_KEY")
 
 # Application definition
@@ -30,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'student.apps.StudentConfig',
     'teacher.apps.TeacherConfig',
     'accounts.apps.AccountsConfig',
